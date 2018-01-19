@@ -7,7 +7,10 @@
     "build": "webpack --config webpack.config.js",
     "dev": "webpack --progress --colors --watch",
     "test": "cross-env NODE_ENV=test mocha --require ignore-styles --compilers js:babel-core/register --colors test/test.setup.js test/**/*.spec.*",
-    "lint": "node_modules/.bin/eslint --ext .jsx,.js src/"
+    "lint": "node_modules/.bin/eslint --ext .jsx,.js src/",
+    "preversion": "npm run lint && npm test",
+    "version": "npm run build && git add -A lib",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
