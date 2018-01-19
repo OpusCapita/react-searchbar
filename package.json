@@ -1,6 +1,6 @@
 {
   "name": "react-searchbar",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Search bar component",
   "main": "lib/react-searchbar.js",
   "scripts": {
