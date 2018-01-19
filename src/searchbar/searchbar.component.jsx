@@ -42,16 +42,24 @@ export default class SearchBar extends React.PureComponent {
     this.setState(this.getState(this.props, value));
   }
 
+  onKeyDown = (e) => {
+    if (e.keyCode && e.keyCode === 13 && this.state.value) {
+      this.onSearch();
+    }
+  }
+
   getState = (props = this.props, value = props.value) => {
     const onChange = props.dynamicSearchStartsFrom ? this.onDynamicSearch : this.onChange;
     const dynamic = props.dynamicSearchStartsFrom ? 'dynamic-search ' : '';
     const close = value && props.dynamicSearchStartsFrom ? 'btn-close ' : '';
     const bsClass = `${dynamic}${close}btn`;
     const onClick = value && props.dynamicSearchStartsFrom ? this.onCloseClick : this.onSearch;
+    const onKeyDown = !props.dynamicSearchStartsFrom ? this.onKeyDown : () => {};
     const disabled = !value;
     const type = props.dynamicSearchStartsFrom ? 'text' : 'search';
     return {
       onChange,
+      onKeyDown,
       bsClass,
       onClick,
       value,
@@ -72,6 +80,7 @@ export default class SearchBar extends React.PureComponent {
             type={this.state.type}
             className={this.props.inputClassName}
             onChange={this.state.onChange}
+            onKeyDown={this.state.onKeyDown}
             placeholder={this.props.searchPlaceHolder}
             value={this.state.value}
           />
