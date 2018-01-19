@@ -1,5 +1,6 @@
 {
-  "name": "react-searchbar",
+  "author": "OpusCapita (www.opuscapita.com)",
+  "name": "@opuscapita/react-searchbar",
   "version": "0.0.4",
   "description": "Search bar component",
   "main": "lib/react-searchbar.js",
