@@ -1,7 +1,7 @@
 {
   "author": "OpusCapita (www.opuscapita.com)",
   "name": "@opuscapita/react-searchbar",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Search bar component",
   "main": "lib/react-searchbar.js",
   "scripts": {
@@ -17,7 +17,6 @@
     "type": "git",
     "url": "git+https://github.com/OpusCapita/react-searchbar.git"
   },
-  "author": "OpusCapita (www.opuscapita.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/OpusCapita/react-searchbar/issues"
