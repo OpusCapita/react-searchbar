@@ -18,9 +18,9 @@
   }
   .btn.dynamic-search, .btn.dynamic-search:disabled {
     background: transparent;
-    border: none;
+    border: transparent;
     .fa {
-      color: $oc-color-button-normal;
+      // color: $oc-color-button-normal;
     }
   }
   input {
@@ -31,8 +31,9 @@
   .btn {
     &:focus {
       outline: none;
-      border: none;
-      box-shadow: 0 0 0 3px $oc-color-primary-yellow;
+      //border: none;
+      //background-color: $oc-color-button-focused !important;
+      //box-shadow: 0 0 0 1px $oc-color-white, 0 0 0 3px $oc-color-primary-yellow;
     }
   }
 }
