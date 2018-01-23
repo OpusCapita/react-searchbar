@@ -1,3 +1,7 @@
+## 0.0.7
+
+* focus style 
+
 ## 0.0.6
 
 * .npmingnore added

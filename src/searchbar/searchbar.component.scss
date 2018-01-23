@@ -3,8 +3,7 @@
 
 .oc-search-bar {
   width: 100%;
-  background-color: $oc-color-white;
-  border: 1px solid $oc-color-support-lightgray;
+  box-shadow: 0 0 0 1px $oc-color-support-lightgray;
 
   input {
     font-size: $oc-font-size-normal;
@@ -18,21 +17,20 @@
   }
   .btn.dynamic-search, .btn.dynamic-search:disabled {
     background: transparent;
-    border: none;
+    border: transparent;
     .fa {
       color: $oc-color-button-normal;
     }
   }
   input {
     &:focus {
-      box-shadow: inset 0 0 0 3px $oc-color-primary-yellow;
+      box-shadow: inset 0 0 0 2px $oc-color-primary-yellow;
     }
   }
   .btn {
     &:focus {
       outline: none;
-      border: none;
-      box-shadow: 0 0 0 3px $oc-color-primary-yellow;
+      box-shadow: 0 0 0 1px $oc-color-white, 0 0 0 3px $oc-color-primary-yellow;
     }
   }
 }
