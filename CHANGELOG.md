@@ -1,3 +1,7 @@
+## 0.0.8
+
+* tooltip
+
 ## 0.0.7
 
 * focus style 
