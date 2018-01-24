@@ -65,7 +65,6 @@ describe('Searchbar component', () => {
   });
 
   it('should not execute search with ENTER', () => {
-    testEnter(false);
     testEnter(false, 'Laptop', 2);
   });
 });
