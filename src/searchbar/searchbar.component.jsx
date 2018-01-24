@@ -4,6 +4,8 @@ import {
   Button,
   InputGroup,
   FormControl,
+  OverlayTrigger,
+  Tooltip,
 } from 'react-bootstrap';
 import './searchbar.component.scss';
 
@@ -72,28 +74,46 @@ export default class SearchBar extends React.PureComponent {
     this.state.value && this.props.dynamicSearchStartsFrom ? <i className="fa fa-times" /> : <i className="fa fa-search" />
   )
 
+  getTooltip = () => (
+    <Tooltip id="tooltip">
+      {this.props.tooltip}
+    </Tooltip>
+  )
+
+  renderSearchBar = () => (
+    <InputGroup>
+      <FormControl
+        type={this.state.type}
+        className={this.props.inputClassName}
+        onChange={this.state.onChange}
+        onKeyDown={this.state.onKeyDown}
+        placeholder={this.props.searchPlaceHolder}
+        value={this.state.value}
+      />
+      <InputGroup.Button>
+        <Button
+          bsClass={this.state.bsClass}
+          onClick={this.state.onClick}
+          disabled={this.state.disabled}
+        >
+          {this.getIcon()}
+        </Button>
+      </InputGroup.Button>
+    </InputGroup>
+  )
+
+  renderContent = () => (
+    this.props.tooltip ?
+      <OverlayTrigger placement="bottom" overlay={this.getTooltip()} delay={this.props.tooltipDelay}>
+        {this.renderSearchBar()}
+      </OverlayTrigger> :
+      this.renderSearchBar()
+  )
+
   render() {
     return (
       <div className="oc-search-bar">
-        <InputGroup>
-          <FormControl
-            type={this.state.type}
-            className={this.props.inputClassName}
-            onChange={this.state.onChange}
-            onKeyDown={this.state.onKeyDown}
-            placeholder={this.props.searchPlaceHolder}
-            value={this.state.value}
-          />
-          <InputGroup.Button>
-            <Button
-              bsClass={this.state.bsClass}
-              onClick={this.state.onClick}
-              disabled={this.state.disabled}
-            >
-              {this.getIcon()}
-            </Button>
-          </InputGroup.Button>
-        </InputGroup>
+        {this.renderContent()}
       </div>
     );
   }
@@ -106,6 +126,8 @@ SearchBar.propTypes = {
   searchPlaceHolder: PropTypes.string,
   value: PropTypes.string,
   dynamicSearchStartsFrom: PropTypes.number,
+  tooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  tooltipDelay: PropTypes.number,
 };
 
 SearchBar.defaultProps = {
@@ -114,4 +136,6 @@ SearchBar.defaultProps = {
   searchPlaceHolder: 'Search...',
   value: '',
   dynamicSearchStartsFrom: 0,
+  tooltip: '',
+  tooltipDelay: 0,
 };

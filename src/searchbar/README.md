@@ -20,7 +20,8 @@ Back to [Root](../../README.md)
 | searchPlaceHolder        | strings           | 'Search...'                              | Placeholder                              |
 | value                    | strings           | ''                                       | Default keyword                          |
 | dynamicSearchStartsFrom  | strings           | 0                                        | 0, if not dynamic search is off. Otherwise dynamic search starts when keyword is long enough. |
-
+| tooltip                  | strings           | ''                                       | Tooltip for the serach bar. Tooltip is recommened when **dynamicSearchStartsFrom** is greater than 0. |
+| tooltipDelay             | number            | 0                                        | A millisecond delay amount to show and hide the tooltip once triggered. |
 
 ### Code example
 
