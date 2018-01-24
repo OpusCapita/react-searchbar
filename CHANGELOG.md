@@ -1,6 +1,7 @@
 ## 0.0.9
 
 * Issue #4 fixed
+* default tooltip added
 
 ## 0.0.8
 
