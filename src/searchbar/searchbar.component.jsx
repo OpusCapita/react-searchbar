@@ -27,10 +27,9 @@ export default class SearchBar extends React.PureComponent {
 
   onDynamicSearch = (e) => {
     const value = (e.target.value || '').trim();
-    if (this.props.dynamicSearchStartsFrom <= value.length) {
+    if (this.props.dynamicSearchStartsFrom <= value.length || !value) {
       this.props.onSearch(value);
     } else {
-      this.props.onSearch('');
       this.setState(this.getState(this.props, value));
     }
   }
