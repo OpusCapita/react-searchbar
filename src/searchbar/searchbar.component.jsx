@@ -126,7 +126,7 @@ SearchBar.propTypes = {
   searchPlaceHolder: PropTypes.string,
   value: PropTypes.string,
   dynamicSearchStartsFrom: PropTypes.number,
-  tooltip: PropTypes.string,
+  tooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   tooltipDelay: PropTypes.number,
 };
 
