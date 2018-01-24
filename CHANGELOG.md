@@ -1,3 +1,7 @@
+## 0.0.9
+
+* Issue #4 fixed
+
 ## 0.0.8
 
 * tooltip
