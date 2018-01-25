@@ -103,8 +103,8 @@ export default class SearchBar extends React.PureComponent {
   )
 
   renderContent = () => {
-    const tooltip = this.props.dynamicSearchStartsFrom && !this.props.tooltip ? 
-      'Search starts when you have entered enough characters.' : 
+    const tooltip = this.props.dynamicSearchStartsFrom && !this.props.tooltip ?
+      'Search starts when you have entered enough characters.' :
       this.props.tooltip;
     return (
       tooltip ?
