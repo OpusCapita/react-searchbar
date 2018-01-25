@@ -27,7 +27,7 @@ export default class SearchBar extends React.PureComponent {
 
   onDynamicSearch = (e) => {
     const value = (e.target.value || '').trim();
-    if (this.props.dynamicSearchStartsFrom <= value.length) {
+    if (this.props.dynamicSearchStartsFrom <= value.length || !value) {
       this.props.onSearch(value);
     } else {
       this.setState(this.getState(this.props, value));
@@ -45,7 +45,7 @@ export default class SearchBar extends React.PureComponent {
   }
 
   onKeyDown = (e) => {
-    if (e.keyCode && e.keyCode === 13 && this.state.value) {
+    if (e.keyCode && e.keyCode === 13) {
       this.onSearch();
     }
   }
@@ -74,9 +74,9 @@ export default class SearchBar extends React.PureComponent {
     this.state.value && this.props.dynamicSearchStartsFrom ? <i className="fa fa-times" /> : <i className="fa fa-search" />
   )
 
-  getTooltip = () => (
+  getTooltip = tooltip => (
     <Tooltip id="tooltip">
-      {this.props.tooltip}
+      {tooltip}
     </Tooltip>
   )
 
@@ -102,13 +102,18 @@ export default class SearchBar extends React.PureComponent {
     </InputGroup>
   )
 
-  renderContent = () => (
-    this.props.tooltip ?
-      <OverlayTrigger placement="bottom" overlay={this.getTooltip()} delay={this.props.tooltipDelay}>
-        {this.renderSearchBar()}
-      </OverlayTrigger> :
-      this.renderSearchBar()
-  )
+  renderContent = () => {
+    const tooltip = this.props.dynamicSearchStartsFrom && !this.props.tooltip ? 
+      'Search starts when you have entered enough characters.' : 
+      this.props.tooltip;
+    return (
+      tooltip ?
+        <OverlayTrigger placement="bottom" overlay={this.getTooltip(tooltip)} delay={this.props.tooltipDelay}>
+          {this.renderSearchBar()}
+        </OverlayTrigger> :
+        this.renderSearchBar()
+    );
+  }
 
   render() {
     return (
