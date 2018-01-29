@@ -15,6 +15,9 @@
   input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: searchfield-cancel-button;
   }
+  input[type="text"]::-ms-clear {
+    display: none;
+  }  
   .btn.dynamic-search, .btn.dynamic-search:disabled {
     background: transparent;
     border: transparent;

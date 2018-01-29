@@ -1,3 +1,7 @@
+## 0.0.10
+
+* Hide input text clear in IE
+
 ## 0.0.9
 
 * Issue #4 fixed
