@@ -7,7 +7,7 @@ import {
   FormControl,
 } from 'react-bootstrap';
 
-import SearchBar from '../../src/searchbar/index';
+import SearchBar from '../../src/index';
 
 describe('Searchbar component', () => {
 

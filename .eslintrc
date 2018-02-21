@@ -34,6 +34,7 @@
     "import/no-extraneous-dependencies": ["error", {
       "devDependencies": true,
       "optionalDependencies": true,
-      "peerDependencies": true}]
+      "peerDependencies": true}],
+    "react/prefer-stateless-function": "off"
   }
 }

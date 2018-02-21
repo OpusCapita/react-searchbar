@@ -1,1 +1,3 @@
-export SearchBar from './searchbar/index.js';
+import SearchBar from './searchbar.component';
+
+export default SearchBar;

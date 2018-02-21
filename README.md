@@ -1,7 +1,7 @@
 # react-searchbar
-### [Demo](https://opuscapita.github.io/oc-common-ui/#/searchbar)
 
-### [API](./src/searchbar/README.md)
+### Description
+**SearchBar** is suitable for both automatic filtering and searching. 
 
 There is two different use cases for the search bar:
 1. Search is started automatically after user's input.
@@ -16,25 +16,47 @@ There is two different use cases for the search bar:
 * User should be able to move the keyboard focus to both input and icon area separately.
 
 ### Installation
-
 ```
 npm install @opuscapita/react-searchbar
 ```
 
-### Development
+### Demo
+View the [DEMO](https://opuscapita.github.io/react-searchbar)
 
-* Run `npm install` to get the project's dependencies
-* Run `npm run build` to produce minified version of the library
-* Run `npm run dev` to produce development version of the library.
-* Run `npm run test` to run tests
+### Builds
+#### UMD
+The default build with compiled styles in the .js file. Also minified version available in the lib/umd directory.
+#### CommonJS/ES Module
+You need to configure your module loader to use `cjs` or `es` fields of the package.json to use these module types.
+Also you need to configure sass loader, since all the styles are in sass format.
+* With webpack use [resolve.mainFields](https://webpack.js.org/configuration/resolve/#resolve-mainfields) to configure the module type.
+* Add [SASS loader](https://github.com/webpack-contrib/sass-loader) to support importing of SASS styles.
 
-#### Contributing
-* Make a new branch for the changes
-* Update `CHANGELOG.md` file
-* Commit changes (not `lib`)
-* Make a pull request
-* Merge the pull request and delete the development branch
+### API
+| Prop name                | Type              | Default                                  | Description                              |
+| ------------------------ | ----------------- | ---------------------------------------- | ---------------------------------------- |
+| onSearch                 | function          | required                                 | Callback function for searched keyword   |
+| onCloseClick             | function          |                                          | Callback function for clearing keyword   |
+| inputClassName           | string            | ''                                       | class for input                          |
+| searchPlaceHolder        | strings           | 'Search...'                              | Placeholder                              |
+| value                    | strings           | ''                                       | Default keyword                          |
+| dynamicSearchStartsFrom  | strings           | 0                                        | 0, if not dynamic search is off. Otherwise dynamic search starts when keyword is long enough. |
+| tooltip                  | strings           | ''                                       | Tooltip for the serach bar. Tooltip is recommened when **dynamicSearchStartsFrom** is greater than 0. |
+| tooltipDelay             | number            | 0                                        | A millisecond delay amount to show and hide the tooltip once triggered. |
 
-#### Creating a new release
-* Run `npm version [major|minor|patch]` [Info](https://docs.npmjs.com/cli/version)
-* Run `npm publish`
+### Code example
+```jsx
+import React from 'react';
+import { SearchBar } from '@opuscapita/react-searchbar';
+
+export default class ReactView extends React.Component {
+  render() {
+    return (
+      <SearchBar
+        onSearch={this.handleSearch}
+        value={this.state.searchValue}
+      />
+    );
+  }
+}
+```

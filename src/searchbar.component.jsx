@@ -10,6 +10,27 @@ import {
 import './searchbar.component.scss';
 
 export default class SearchBar extends React.PureComponent {
+  static propTypes = {
+    onSearch: PropTypes.func.isRequired,
+    onCloseClick: PropTypes.func,
+    inputClassName: PropTypes.string,
+    searchPlaceHolder: PropTypes.string,
+    value: PropTypes.string,
+    dynamicSearchStartsFrom: PropTypes.number,
+    tooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+    tooltipDelay: PropTypes.number,
+  }
+
+  static defaultProps = {
+    onCloseClick: () => {},
+    inputClassName: '',
+    searchPlaceHolder: 'Search...',
+    value: '',
+    dynamicSearchStartsFrom: 0,
+    tooltip: '',
+    tooltipDelay: 0,
+  }
+
   constructor(props) {
     super(props);
     this.state = this.getState();
@@ -123,24 +144,3 @@ export default class SearchBar extends React.PureComponent {
     );
   }
 }
-
-SearchBar.propTypes = {
-  onSearch: PropTypes.func.isRequired,
-  onCloseClick: PropTypes.func,
-  inputClassName: PropTypes.string,
-  searchPlaceHolder: PropTypes.string,
-  value: PropTypes.string,
-  dynamicSearchStartsFrom: PropTypes.number,
-  tooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  tooltipDelay: PropTypes.number,
-};
-
-SearchBar.defaultProps = {
-  onCloseClick: () => {},
-  inputClassName: '',
-  searchPlaceHolder: 'Search...',
-  value: '',
-  dynamicSearchStartsFrom: 0,
-  tooltip: '',
-  tooltipDelay: 0,
-};
