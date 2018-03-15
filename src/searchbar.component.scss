@@ -1,9 +1,5 @@
-$oc-color-primary-yellow:    #FECA1D !default;
-$oc-color-white:             #FFFFFF !default;
-$oc-color-support-lightgray: #D3DADE !default;
-$oc-color-button-normal:     #67707c !default;
-
-$oc-font-size-normal:        1.4rem  !default;
+@import "~@opuscapita/oc-cm-common-styles/styles/colors";
+@import "~@opuscapita/oc-cm-common-styles/styles/variables";
 
 .oc-search-bar {
   width: 100%;
