@@ -100,7 +100,9 @@
     "webpack-notifier": "1.5.1",
     "write-file-webpack-plugin": "4.2.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@opuscapita/oc-cm-common-styles": "2.0.2"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/OpusCapita/react-searchbar.git"
