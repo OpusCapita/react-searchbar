@@ -1,9 +1,5 @@
-$oc-color-primary-yellow:    #FECA1D !default;
-$oc-color-white:             #FFFFFF !default;
-$oc-color-support-lightgray: #D3DADE !default;
-$oc-color-button-normal:     #67707c !default;
-
-$oc-font-size-normal:        1.4rem  !default;
+@import "~@opuscapita/oc-cm-common-styles/styles/colors";
+@import "~@opuscapita/oc-cm-common-styles/styles/variables";
 
 .oc-search-bar {
   width: 100%;
@@ -12,6 +8,10 @@ $oc-font-size-normal:        1.4rem  !default;
   input {
     font-size: $oc-font-size-normal;
     border: none;
+    box-shadow: none;
+    &:focus {
+      box-shadow: 0 0 0 1px $oc-color-primary-yellow, 0 0 8px $oc-color-primary-yellow;
+    }
   }
   input[type="search"] {
     -webkit-appearance: searchfield;
@@ -26,12 +26,8 @@ $oc-font-size-normal:        1.4rem  !default;
       color: $oc-color-button-normal;
     }
   }
-  input {
-    &:focus {
-      box-shadow: inset 0 0 0 2px $oc-color-primary-yellow;
-    }
-  }
   .btn {
+    height: 34px;
     &:focus {
       outline: none;
       box-shadow: 0 0 0 1px $oc-color-white, 0 0 0 3px $oc-color-primary-yellow;

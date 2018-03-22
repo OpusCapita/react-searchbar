@@ -35,6 +35,6 @@ export default class ComponentView extends React.PureComponent {
           dynamicSearchStartsFrom={3}
         />
       </div>
-  );
+    );
   }
 }

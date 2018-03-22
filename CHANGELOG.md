@@ -4,6 +4,9 @@
 
 ## <next>
 
+## 1.0.1
+* Changed focus style
+
 ## 1.0.0
 * Update to React 16.2
 * New template and builds
