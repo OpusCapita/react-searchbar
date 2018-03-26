@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* oc-cm-common-styles version changed
 
 ## 1.0.1
 * Changed focus style
@@ -19,7 +20,7 @@
 * tooltip
 
 ## 0.0.7
-* focus style 
+* focus style
 
 ## 0.0.6
 * .npmingnore added

@@ -101,7 +101,7 @@
     "write-file-webpack-plugin": "4.2.0"
   },
   "dependencies": {
-    "@opuscapita/oc-cm-common-styles": "2.0.2"
+    "@opuscapita/oc-cm-common-styles": "2.0.4"
   },
   "repository": {
     "type": "git",
