@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Removed search value trimming
+
 ## 1.0.2
 * oc-cm-common-styles version changed
 
