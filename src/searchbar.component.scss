@@ -3,7 +3,8 @@
 
 .oc-search-bar {
   width: 100%;
-  box-shadow: 0 0 0 1px $oc-color-support-lightgray;
+  height: fit-content;
+  border: 1px solid $oc-color-support-lightgray;
 
   input {
     font-size: $oc-font-size-normal;
@@ -22,8 +23,8 @@
   .btn.dynamic-search, .btn.dynamic-search:disabled {
     background: transparent;
     border: transparent;
-    .fa {
-      color: $oc-color-button-normal;
+    svg {
+      color: $oc-color-primary-azure;
     }
   }
   .btn {

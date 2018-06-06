@@ -7,6 +7,9 @@ import {
   OverlayTrigger,
   Tooltip,
 } from 'react-bootstrap';
+import FaSearch from 'react-icons/lib/fa/search';
+import FaClose from 'react-icons/lib/fa/close';
+
 import './searchbar.component.scss';
 
 export default class SearchBar extends React.PureComponent {
@@ -92,7 +95,7 @@ export default class SearchBar extends React.PureComponent {
   }
 
   getIcon = () => (
-    this.state.value && this.props.dynamicSearchStartsFrom ? <i className="fa fa-times" /> : <i className="fa fa-search" />
+    this.state.value && this.props.dynamicSearchStartsFrom ? <FaClose /> : <FaSearch />
   )
 
   getTooltip = tooltip => (

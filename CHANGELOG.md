@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* font-awesome from react-icons
 
 ## 1.0.3
 * Removed search value trimming

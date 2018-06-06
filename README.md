@@ -47,7 +47,7 @@ Also you need to configure sass loader, since all the styles are in sass format.
 ### Code example
 ```jsx
 import React from 'react';
-import { SearchBar } from '@opuscapita/react-searchbar';
+import SearchBar from '@opuscapita/react-searchbar';
 
 export default class ReactView extends React.Component {
   render() {
