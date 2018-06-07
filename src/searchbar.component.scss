@@ -3,9 +3,15 @@
 
 .oc-search-bar {
   width: 100%;
-  height: fit-content;
+  height: 34px;
   border: 1px solid $oc-color-support-lightgray;
 
+  .input-group {
+    display: flex;
+    .form-control {
+      height: 32px;
+    }
+  }
   input {
     font-size: $oc-font-size-normal;
     border: none;
@@ -27,8 +33,13 @@
       color: $oc-color-primary-azure;
     }
   }
+  .input-group-btn {
+    width: 32px;
+  }
   .btn {
-    height: 34px;
+    height: 32px;
+    width: inherit;
+    padding: 0;
     &:focus {
       outline: none;
       box-shadow: 0 0 0 1px $oc-color-white, 0 0 0 3px $oc-color-primary-yellow;
