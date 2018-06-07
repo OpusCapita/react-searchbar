@@ -1,6 +1,8 @@
 @import "~@opuscapita/oc-cm-common-styles/styles/colors";
 @import "~@opuscapita/oc-cm-common-styles/styles/variables";
 
+$search-line-height: 32px;
+
 .oc-search-bar {
   width: 100%;
   height: 34px;
@@ -9,7 +11,7 @@
   .input-group {
     display: flex;
     .form-control {
-      height: 32px;
+      height: $search-line-height;
     }
   }
   input {
@@ -34,10 +36,10 @@
     }
   }
   .input-group-btn {
-    width: 32px;
+    width: $search-line-height;
   }
   .btn {
-    height: 32px;
+    height: $search-line-height;
     width: inherit;
     padding: 0;
     &:focus {
