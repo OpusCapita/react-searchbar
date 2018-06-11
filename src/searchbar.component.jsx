@@ -22,12 +22,14 @@ export default class SearchBar extends React.PureComponent {
     dynamicSearchStartsFrom: PropTypes.number,
     tooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     tooltipDelay: PropTypes.number,
+    tooltipText: PropTypes.string,
   }
 
   static defaultProps = {
     onCloseClick: () => {},
     inputClassName: '',
     searchPlaceHolder: 'Search...',
+    tooltipText: 'Search starts when you have entered enough characters.',
     value: '',
     dynamicSearchStartsFrom: 0,
     tooltip: '',
@@ -80,7 +82,8 @@ export default class SearchBar extends React.PureComponent {
     const close = value && props.dynamicSearchStartsFrom ? 'btn-close ' : '';
     const bsClass = `${dynamic}${close}btn`;
     const onClick = value && props.dynamicSearchStartsFrom ? this.onCloseClick : this.onSearch;
-    const onKeyDown = !props.dynamicSearchStartsFrom ? this.onKeyDown : () => {};
+    const onKeyDown = !props.dynamicSearchStartsFrom ? this.onKeyDown : () => {
+    };
     const disabled = !value;
     const type = props.dynamicSearchStartsFrom ? 'text' : 'search';
     return {
@@ -128,7 +131,7 @@ export default class SearchBar extends React.PureComponent {
 
   renderContent = () => {
     const tooltip = this.props.dynamicSearchStartsFrom && !this.props.tooltip ?
-      'Search starts when you have entered enough characters.' :
+      this.props.tooltipText :
       this.props.tooltip;
     return (
       tooltip ?
