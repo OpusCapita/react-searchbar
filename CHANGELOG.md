@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Tooltip text can now be localized via tooltipText prop
 
 ## 1.0.4
 * font-awesome from react-icons
