@@ -43,6 +43,7 @@ Also you need to configure sass loader, since all the styles are in sass format.
 | dynamicSearchStartsFrom  | strings           | 0                                        | 0, if not dynamic search is off. Otherwise dynamic search starts when keyword is long enough. |
 | tooltip                  | strings           | ''                                       | Tooltip for the serach bar. Tooltip is recommened when **dynamicSearchStartsFrom** is greater than 0. |
 | tooltipDelay             | number            | 0                                        | A millisecond delay amount to show and hide the tooltip once triggered. |
+| enableEmptySearch        | bool              | false                                    | Enables search button even if the search query is empty |
 
 ### Code example
 ```jsx
