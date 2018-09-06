@@ -22,7 +22,7 @@ export default class SearchBar extends React.PureComponent {
     dynamicSearchStartsFrom: PropTypes.number,
     tooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     tooltipDelay: PropTypes.number,
-    enableEmptySearch: PropTypes.bool,
+    allowEmptySearch: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -34,7 +34,7 @@ export default class SearchBar extends React.PureComponent {
     dynamicSearchStartsFrom: 0,
     tooltip: '',
     tooltipDelay: 0,
-    enableEmptySearch: false,
+    allowEmptySearch: false,
   }
 
   constructor(props) {
@@ -83,7 +83,7 @@ export default class SearchBar extends React.PureComponent {
     const close = value && props.dynamicSearchStartsFrom ? 'btn-close ' : '';
     const bsClass = `${dynamic}${close}btn`;
     const onClick = (value && props.dynamicSearchStartsFrom) ||
-    props.enableEmptySearch ? this.onCloseClick : this.onSearch;
+    props.allowEmptySearch ? this.onCloseClick : this.onSearch;
     const onKeyDown = !props.dynamicSearchStartsFrom ? this.onKeyDown : () => {
     };
     const disabled = !value;
@@ -123,7 +123,7 @@ export default class SearchBar extends React.PureComponent {
         <Button
           bsClass={this.state.bsClass}
           onClick={this.state.onClick}
-          disabled={!this.props.enableEmptySearch && this.state.disabled}
+          disabled={!this.props.allowEmptySearch && this.state.disabled}
         >
           {this.getIcon()}
         </Button>
