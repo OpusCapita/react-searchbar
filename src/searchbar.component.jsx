@@ -43,6 +43,7 @@ export default class SearchBar extends React.PureComponent {
   }
 
   componentWillReceiveProps = (nextProps) => {
+    console.log('lolelrs');
     if (nextProps.value !== this.props.value) {
       this.setState(this.getState(nextProps));
     }
@@ -82,8 +83,7 @@ export default class SearchBar extends React.PureComponent {
     const dynamic = props.dynamicSearchStartsFrom ? 'dynamic-search ' : '';
     const close = value && props.dynamicSearchStartsFrom ? 'btn-close ' : '';
     const bsClass = `${dynamic}${close}btn`;
-    const onClick = (value && props.dynamicSearchStartsFrom) ||
-    props.allowEmptySearch ? this.onCloseClick : this.onSearch;
+    const onClick = (value && props.dynamicSearchStartsFrom) ? this.onCloseClick : this.onSearch;
     const onKeyDown = !props.dynamicSearchStartsFrom ? this.onKeyDown : () => {
     };
     const disabled = !value;
