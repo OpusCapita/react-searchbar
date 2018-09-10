@@ -43,7 +43,6 @@ export default class SearchBar extends React.PureComponent {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log('lolelrs');
     if (nextProps.value !== this.props.value) {
       this.setState(this.getState(nextProps));
     }
