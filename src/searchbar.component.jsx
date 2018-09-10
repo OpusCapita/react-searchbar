@@ -82,8 +82,7 @@ export default class SearchBar extends React.PureComponent {
     const dynamic = props.dynamicSearchStartsFrom ? 'dynamic-search ' : '';
     const close = value && props.dynamicSearchStartsFrom ? 'btn-close ' : '';
     const bsClass = `${dynamic}${close}btn`;
-    const onClick = (value && props.dynamicSearchStartsFrom) ||
-    props.allowEmptySearch ? this.onCloseClick : this.onSearch;
+    const onClick = (value && props.dynamicSearchStartsFrom) ? this.onCloseClick : this.onSearch;
     const onKeyDown = !props.dynamicSearchStartsFrom ? this.onKeyDown : () => {
     };
     const disabled = !value;
