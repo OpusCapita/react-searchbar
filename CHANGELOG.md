@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.0.6
 * Fix: Search button did not work properly when using allowEmptySearch prop
 
 ## 1.0.5
