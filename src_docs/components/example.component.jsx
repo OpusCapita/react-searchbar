@@ -29,6 +29,7 @@ export default class ComponentView extends React.PureComponent {
         />
         <h1>Search bar auto</h1>
         <SearchBar
+          id="auto-searchbar"
           value={this.state.filterValue}
           onSearch={this.handleFilter}
           searchPlaceHolder="Search..."

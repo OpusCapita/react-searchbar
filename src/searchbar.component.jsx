@@ -14,6 +14,7 @@ import './searchbar.component.scss';
 
 export default class SearchBar extends React.PureComponent {
   static propTypes = {
+    id: PropTypes.string,
     onSearch: PropTypes.func.isRequired,
     onCloseClick: PropTypes.func,
     inputClassName: PropTypes.string,
@@ -26,6 +27,7 @@ export default class SearchBar extends React.PureComponent {
   }
 
   static defaultProps = {
+    id: 'oc-react-searchbar',
     onCloseClick: () => {
     },
     inputClassName: '',
@@ -111,6 +113,7 @@ export default class SearchBar extends React.PureComponent {
   renderSearchBar = () => (
     <InputGroup>
       <FormControl
+        id={`${this.props.id}-input`}
         type={this.state.type}
         className={this.props.inputClassName}
         onChange={this.state.onChange}
@@ -120,6 +123,7 @@ export default class SearchBar extends React.PureComponent {
       />
       <InputGroup.Button>
         <Button
+          id={`${this.props.id}-button`}
           bsClass={this.state.bsClass}
           onClick={this.state.onClick}
           disabled={!this.props.allowEmptySearch && this.state.disabled}
@@ -136,7 +140,11 @@ export default class SearchBar extends React.PureComponent {
       this.props.tooltip;
     return (
       tooltip ?
-        <OverlayTrigger placement="bottom" overlay={this.getTooltip(tooltip)} delay={this.props.tooltipDelay}>
+        <OverlayTrigger
+          placement="bottom"
+          overlay={this.getTooltip(tooltip)}
+          delay={this.props.tooltipDelay}
+        >
           {this.renderSearchBar()}
         </OverlayTrigger> :
         this.renderSearchBar()
@@ -145,7 +153,7 @@ export default class SearchBar extends React.PureComponent {
 
   render() {
     return (
-      <div className="oc-search-bar">
+      <div id={`${this.props.id}-container`} className="oc-search-bar">
         {this.renderContent()}
       </div>
     );

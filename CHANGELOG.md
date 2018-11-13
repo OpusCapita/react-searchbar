@@ -4,6 +4,10 @@
 
 ## <next>
 
+## 1.0.7
+* Add ID prop and HTML ID tags
+* Upgrade packages
+
 ## 1.0.6
 * Fix: Search button did not work properly when using allowEmptySearch prop
 

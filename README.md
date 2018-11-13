@@ -35,6 +35,7 @@ Also you need to configure sass loader, since all the styles are in sass format.
 ### API
 | Prop name                | Type              | Default                                  | Description                              |
 | ------------------------ | ----------------- | ---------------------------------------- | ---------------------------------------- |
+| id                       | string            | oc-react-searchbar                       | ID prefix of HTML components             |
 | onSearch                 | function          | required                                 | Callback function for searched keyword   |
 | onCloseClick             | function          |                                          | Callback function for clearing keyword   |
 | inputClassName           | string            | ''                                       | class for input                          |
