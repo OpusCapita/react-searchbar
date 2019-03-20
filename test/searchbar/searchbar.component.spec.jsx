@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
-import { 
+import {
   Button,
   FormControl,
 } from 'react-bootstrap';
@@ -10,11 +10,10 @@ import {
 import SearchBar from '../../src/index';
 
 describe('Searchbar component', () => {
-
-  function testEnter(result, value = '', dynamicSearchStartsFrom = 0) {
+  function testEnter(result, defaultValue = '', isDynamic) {
     const props = {
-      dynamicSearchStartsFrom,
-      value,
+      isDynamic,
+      defaultValue,
       onSearch: sinon.spy(),
     };
     const wrapper = mount(<SearchBar {...props} />);
@@ -44,7 +43,7 @@ describe('Searchbar component', () => {
 
   it('should execute dynamic search for correct keywords', () => {
     const onChange = sinon.spy();
-    const wrapper = mount(<SearchBar onSearch={onChange} dynamicSearchStartsFrom={3} />);
+    const wrapper = mount(<SearchBar onSearch={onChange} isDynamic minChars={3} />);
 
     const input = wrapper.find('input[type="text"]');
     expect(input).to.have.length(1);
@@ -61,10 +60,10 @@ describe('Searchbar component', () => {
   });
 
   it('should execute search with ENTER', () => {
-    testEnter(true, 'Laptop');
+    testEnter(true, 'Laptop', false);
   });
 
   it('should not execute search with ENTER', () => {
-    testEnter(false, 'Laptop', 2);
+    testEnter(false, 'Laptop', true);
   });
 });
