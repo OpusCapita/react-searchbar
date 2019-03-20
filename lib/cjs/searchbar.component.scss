@@ -22,6 +22,9 @@ $search-line-height: 32px;
       box-shadow: 0 0 0 1px $oc-color-primary-yellow, 0 0 8px $oc-color-primary-yellow;
     }
   }
+  input[type="text"]::-ms-clear {
+    display: none;
+  }
   input[type="search"] {
     -webkit-appearance: searchfield;
   }
