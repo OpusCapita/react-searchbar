@@ -3,6 +3,11 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Refactor props
+  * Removed props: `value`, `onCloseClick`, `dynamicSearchStartsFrom`, `tooltip`, `searchPlaceHolder`
+  * Added props: `defaultValue`, `onClear`, `minChars`, `isDynamic`, `isTooltipEnabled`, `translations`
+* Fix bug: Double clear icon in IE
+* Upgrade npm packages
 
 ## 1.0.7
 * Add ID prop and HTML ID tags

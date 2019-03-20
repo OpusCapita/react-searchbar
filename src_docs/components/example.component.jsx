@@ -6,7 +6,6 @@ export default class ComponentView extends React.PureComponent {
     super(props);
     this.state = {
       searchValue: '',
-      filterValue: '',
     };
   }
 
@@ -14,27 +13,18 @@ export default class ComponentView extends React.PureComponent {
     this.setState({ searchValue });
   }
 
-  handleFilter = (filterValue) => {
-    this.setState({ filterValue });
-  }
-
   render() {
     return (
-      <div style={{ padding: '10px' }}>
+      <div>
         <h1>Search bar</h1>
         <SearchBar
+          {...this.props}
           value={this.state.searchValue}
           onSearch={this.handleSearch}
-          searchPlaceHolder="Search..."
         />
-        <h1>Search bar auto</h1>
-        <SearchBar
-          id="auto-searchbar"
-          value={this.state.filterValue}
-          onSearch={this.handleFilter}
-          searchPlaceHolder="Search..."
-          dynamicSearchStartsFrom={3}
-        />
+        <p style={{ marginTop: '20px' }}>
+          Search keyword: {this.state.searchValue}
+        </p>
       </div>
     );
   }

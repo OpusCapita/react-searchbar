@@ -15,94 +15,128 @@ import './searchbar.component.scss';
 export default class SearchBar extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string,
-    onSearch: PropTypes.func.isRequired,
-    onCloseClick: PropTypes.func,
+    className: PropTypes.string,
     inputClassName: PropTypes.string,
-    searchPlaceHolder: PropTypes.string,
-    value: PropTypes.string,
-    dynamicSearchStartsFrom: PropTypes.number,
-    tooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+    defaultValue: PropTypes.string,
     tooltipDelay: PropTypes.number,
+    minChars: PropTypes.number,
     allowEmptySearch: PropTypes.bool,
+    isDynamic: PropTypes.bool,
+    isTooltipEnabled: PropTypes.bool,
+    onSearch: PropTypes.func,
+    onClear: PropTypes.func,
+    translations: PropTypes.shape({
+      tooltip: PropTypes.string,
+      searchPlaceHolder: PropTypes.string,
+    }),
   }
 
   static defaultProps = {
     id: 'oc-react-searchbar',
-    onCloseClick: () => {
-    },
+    className: 'oc-search-bar',
     inputClassName: '',
-    searchPlaceHolder: 'Search...',
-    value: '',
-    dynamicSearchStartsFrom: 0,
-    tooltip: '',
+    defaultValue: '',
+    minChars: 0,
     tooltipDelay: 0,
-    allowEmptySearch: false,
+    allowEmptySearch: true,
+    isDynamic: false,
+    isTooltipEnabled: false,
+    onSearch: () => {},
+    onClear: () => {},
+    translations: {
+      tooltip: '',
+      searchPlaceHolder: 'Search...',
+    },
   }
 
   constructor(props) {
     super(props);
-    this.state = this.getState();
+    this.state = {
+      searchKeyword: props.defaultValue,
+    };
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    if (nextProps.value !== this.props.value) {
-      this.setState(this.getState(nextProps));
+  onClearClick = () => {
+    const {
+      onClear,
+      defaultValue,
+    } = this.props;
+    this.setState({ searchKeyword: defaultValue });
+    this.onSearch(defaultValue);
+    onClear();
+  }
+
+  // Search when allowed
+  onSearch = (keyword) => {
+    const {
+      onSearch,
+      allowEmptySearch,
+      minChars,
+    } = this.props;
+    if ((keyword.length === 0 && allowEmptySearch) || (keyword.length >= minChars)) {
+      onSearch(keyword);
     }
-  }
-
-  onSearch = () => {
-    this.props.onSearch(this.state.value);
-  }
-
-  onDynamicSearch = (e) => {
-    const value = (e.target.value || '');
-    if (this.props.dynamicSearchStartsFrom <= value.length || !value) {
-      this.props.onSearch(value);
-    } else {
-      this.setState(this.getState(this.props, value));
-    }
-  }
-
-  onCloseClick = () => {
-    this.props.onSearch('');
-    this.props.onCloseClick();
   }
 
   onChange = (e) => {
-    const value = (e.target.value || '');
-    this.setState(this.getState(this.props, value));
+    const {
+      isDynamic,
+      defaultValue,
+    } = this.props;
+    const searchKeyword = (e.target.value || defaultValue);
+    this.setState({ searchKeyword });
+    if (isDynamic) {
+      this.onSearch(searchKeyword);
+    }
+  }
+
+  onSearchClick = () => {
+    this.onSearch(this.state.searchKeyword);
   }
 
   onKeyDown = (e) => {
     if (e.keyCode && e.keyCode === 13) {
-      this.onSearch();
+      this.onSearch(this.state.searchKeyword);
     }
   }
 
-  getState = (props = this.props, value = props.value) => {
-    const onChange = props.dynamicSearchStartsFrom ? this.onDynamicSearch : this.onChange;
-    const dynamic = props.dynamicSearchStartsFrom ? 'dynamic-search ' : '';
-    const close = value && props.dynamicSearchStartsFrom ? 'btn-close ' : '';
-    const bsClass = `${dynamic}${close}btn`;
-    const onClick = (value && props.dynamicSearchStartsFrom) ? this.onCloseClick : this.onSearch;
-    const onKeyDown = !props.dynamicSearchStartsFrom ? this.onKeyDown : () => {
-    };
-    const disabled = !value;
-    const type = props.dynamicSearchStartsFrom ? 'text' : 'search';
-    return {
-      onChange,
-      onKeyDown,
-      bsClass,
-      onClick,
-      value,
-      disabled,
-      type,
-    };
+  getButton = () => {
+    const {
+      id,
+      allowEmptySearch,
+      isDynamic,
+      minChars,
+    } = this.props;
+    const {
+      searchKeyword,
+    } = this.state;
+    const bsClass = ['btn'];
+    let icon = <FaSearch />;
+    let onClick = this.onSearchClick;
+    let isDisabled = true;
+    if ((searchKeyword.length === 0 && allowEmptySearch) || (searchKeyword.length >= minChars)) {
+      isDisabled = false;
+    }
+    if (isDynamic) {
+      bsClass.push('dynamic-search');
+    }
+    if (searchKeyword && isDynamic) {
+      bsClass.push('btn-close');
+      icon = <FaClose />;
+      onClick = this.onClearClick;
+      isDisabled = false;
+    }
+    return (
+      <Button
+        id={`${id}-button`}
+        bsClass={bsClass.join(' ')}
+        onClick={onClick}
+        disabled={isDisabled}
+      >
+        {icon}
+      </Button>
+    );
   }
-
-  getIcon = () => (
-    this.state.value && this.props.dynamicSearchStartsFrom ? <FaClose /> : <FaSearch />
-  )
 
   getTooltip = tooltip => (
     <Tooltip id="tooltip">
@@ -110,50 +144,74 @@ export default class SearchBar extends React.PureComponent {
     </Tooltip>
   )
 
-  renderSearchBar = () => (
-    <InputGroup>
-      <FormControl
-        id={`${this.props.id}-input`}
-        type={this.state.type}
-        className={this.props.inputClassName}
-        onChange={this.state.onChange}
-        onKeyDown={this.state.onKeyDown}
-        placeholder={this.props.searchPlaceHolder}
-        value={this.state.value}
-      />
-      <InputGroup.Button>
-        <Button
-          id={`${this.props.id}-button`}
-          bsClass={this.state.bsClass}
-          onClick={this.state.onClick}
-          disabled={!this.props.allowEmptySearch && this.state.disabled}
-        >
-          {this.getIcon()}
-        </Button>
-      </InputGroup.Button>
-    </InputGroup>
-  )
-
-  renderContent = () => {
-    const tooltip = this.props.dynamicSearchStartsFrom && !this.props.tooltip ?
-      'Search starts when you have entered enough characters.' :
-      this.props.tooltip;
+  renderSearchBar = () => {
+    const {
+      id,
+      inputClassName,
+      translations,
+      isDynamic,
+    } = this.props;
+    const {
+      searchKeyword,
+    } = this.state;
     return (
-      tooltip ?
-        <OverlayTrigger
-          placement="bottom"
-          overlay={this.getTooltip(tooltip)}
-          delay={this.props.tooltipDelay}
-        >
-          {this.renderSearchBar()}
-        </OverlayTrigger> :
-        this.renderSearchBar()
+      <InputGroup>
+        <FormControl
+          id={`${id}-input`}
+          type={isDynamic ? 'text' : 'search'}
+          className={inputClassName}
+          onChange={this.onChange}
+          onKeyDown={isDynamic ? () => {} : this.onKeyDown}
+          placeholder={translations.searchPlaceHolder}
+          value={searchKeyword}
+        />
+        <InputGroup.Button>
+          {this.getButton()}
+        </InputGroup.Button>
+      </InputGroup>
     );
   }
 
+  renderContent = () => {
+    const {
+      translations,
+      tooltipDelay,
+      isDynamic,
+      isTooltipEnabled,
+      minChars,
+    } = this.props;
+    let tooltipText = translations.tooltip;
+    if (!tooltipText) {
+      if (isDynamic) {
+        tooltipText = `Search starts when you have entered ${minChars} characters.`;
+      } else if (minChars) {
+        tooltipText = `You can search when you have entered ${minChars} characters.`;
+      }
+    }
+    if (tooltipText && isTooltipEnabled) {
+      return (
+        <OverlayTrigger
+          placement="bottom"
+          overlay={this.getTooltip(tooltipText)}
+          delay={tooltipDelay}
+        >
+          {this.renderSearchBar()}
+        </OverlayTrigger>
+      );
+    }
+    return this.renderSearchBar();
+  }
+
   render() {
+    const {
+      id,
+      className,
+    } = this.props;
     return (
-      <div id={`${this.props.id}-container`} className="oc-search-bar">
+      <div
+        id={`${id}-container`}
+        className={className}
+      >
         {this.renderContent()}
       </div>
     );
