@@ -23,6 +23,12 @@ npm install @opuscapita/react-searchbar
 ### Demo
 View the [DEMO](https://opuscapita.github.io/react-searchbar)
 
+### Change log
+View the [Change log](CHANGELOG.md)
+
+### Migrate guide
+View the [Migrate guide](MIGRATEGUIDE.md) between major versions
+
 ### Builds
 #### UMD
 The default build with compiled styles in the .js file. Also minified version available in the lib/umd directory.
@@ -33,18 +39,20 @@ Also you need to configure sass loader, since all the styles are in sass format.
 * Add [SASS loader](https://github.com/webpack-contrib/sass-loader) to support importing of SASS styles.
 
 ### API
-| Prop name                | Type              | Default                                  | Description                              |
-| ------------------------ | ----------------- | ---------------------------------------- | ---------------------------------------- |
-| id                       | string            | oc-react-searchbar                       | ID prefix of HTML components             |
-| onSearch                 | function          | required                                 | Callback function for searched keyword   |
-| onCloseClick             | function          |                                          | Callback function for clearing keyword   |
-| inputClassName           | string            | ''                                       | class for input                          |
-| searchPlaceHolder        | strings           | 'Search...'                              | Placeholder                              |
-| value                    | strings           | ''                                       | Default keyword                          |
-| dynamicSearchStartsFrom  | strings           | 0                                        | 0, if not dynamic search is off. Otherwise dynamic search starts when keyword is long enough. |
-| tooltip                  | strings           | ''                                       | Tooltip for the serach bar. Tooltip is recommened when **dynamicSearchStartsFrom** is greater than 0. |
-| tooltipDelay             | number            | 0                                        | A millisecond delay amount to show and hide the tooltip once triggered. |
-| allowEmptySearch         | bool              | false                                    | Enables search button even if the search query is empty |
+| Prop name          | Type      | Default / Parameter | Description                                                             |
+| ------------------ | ----------| ------------------- | ----------------------------------------------------------------------- |
+| id                 | string    | oc-react-searchbar  | ID prefix of HTML components                                            |
+| className          | string    | ''                  | Component class                                                         |
+| inputClassName     | string    | ''                  | Class for input                                                         |
+| defaultValue       | strings   | ''                  | Default keyword                                                         |
+| minChars           | number    | 0                   | Minimum chars allowed to search                                         |
+| tooltipDelay       | number    | 0                   | A millisecond delay amount to show and hide the tooltip once triggered. |
+| allowEmptySearch   | bool      | false               | Enables search button even if the search query is empty                 |
+| isDynamic          | boolean   | false               | Dynamic search enables automatic searching                              |
+| isTooltipEnabled   | boolean   | false               | Is tooltip visible                                                      |
+| onSearch           | function  | (keyword: string)   | Callback function for searched keyword                                  |
+| onClear            | function  | ()                  | Callback function for clearing keyword                                  |
+| translations       | object    | { tooltip: '', searchPlaceHolder: 'Search...' } | Translations object                         |
 
 ### Code example
 ```jsx
@@ -56,7 +64,6 @@ export default class ReactView extends React.Component {
     return (
       <SearchBar
         onSearch={this.handleSearch}
-        value={this.state.searchValue}
       />
     );
   }
