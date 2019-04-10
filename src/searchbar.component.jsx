@@ -26,10 +26,10 @@ export default class SearchBar extends React.PureComponent {
     onSearch: PropTypes.func,
     onClear: PropTypes.func,
     translations: PropTypes.shape({
-      tooltip: PropTypes.string,
-      searchPlaceHolder: PropTypes.string,
+      tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+      searchPlaceHolder: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     }),
-  }
+  };
 
   static defaultProps = {
     id: 'oc-react-searchbar',
@@ -47,7 +47,7 @@ export default class SearchBar extends React.PureComponent {
       tooltip: '',
       searchPlaceHolder: 'Search...',
     },
-  }
+  };
 
   constructor(props) {
     super(props);
