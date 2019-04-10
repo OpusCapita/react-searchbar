@@ -8,6 +8,8 @@
   * Added props: `defaultValue`, `onClear`, `minChars`, `isDynamic`, `isTooltipEnabled`, `translations`
 * Fix bug: Double clear icon in IE
 * Upgrade npm packages
+* Translations can now be passed as strings or nodes
+* Fixed search input border color
 
 ## 1.0.7
 * Add ID prop and HTML ID tags
