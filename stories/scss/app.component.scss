@@ -1,0 +1,48 @@
+@import '~@opuscapita/oc-cm-common-styles/styles/app',
+'~@opuscapita/oc-cm-common-styles/styles/mixins',
+'~@opuscapita/oc-cm-common-styles/styles/bootstrap_v3_custom',
+'~@opuscapita/oc-cm-common-styles/styles/bootstrap_v3_overrides',
+'~@opuscapita/oc-cm-common-styles/styles/bootstrap_v3_without_icons',
+'~@opuscapita/oc-cm-common-styles/styles/buttons',
+'~@opuscapita/oc-cm-common-styles/styles/colors',
+'~@opuscapita/oc-cm-common-styles/styles/icons',
+'~@opuscapita/oc-cm-common-styles/styles/inputs',
+'~@opuscapita/oc-cm-common-styles/styles/variables';
+
+.search-bar-container {
+  background: #fff;
+  min-height: 400px;
+  padding: 1rem;
+  margin: 1rem;
+
+  .title-container {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+
+    * {
+      margin: 0;
+    }
+
+    span {
+      margin-left: 2rem;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
