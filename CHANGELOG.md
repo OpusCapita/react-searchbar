@@ -10,6 +10,7 @@
 * Upgrade npm packages
 * Translations can now be passed as strings or nodes
 * Fixed search input border color
+* Add Storybook support
 
 ## 1.0.7
 * Add ID prop and HTML ID tags
