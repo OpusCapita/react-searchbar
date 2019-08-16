@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## next
+
+## 2.1.0
 * Fixed search input border color
 * Added props: `autoFocus`, sets a focus to an input field of SearchBox after component has been mounted.
 
