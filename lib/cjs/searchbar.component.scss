@@ -1,0 +1,53 @@
+@import "~@opuscapita/oc-cm-common-styles/styles/colors";
+@import "~@opuscapita/oc-cm-common-styles/styles/variables";
+
+$search-line-height: 32px;
+
+.oc-search-bar {
+  width: 100%;
+  height: 34px;
+  border: 1px solid $oc-color-support-gray;
+
+  .input-group {
+    display: flex;
+    .form-control {
+      height: $search-line-height;
+    }
+  }
+  input {
+    font-size: $oc-font-size-normal;
+    border: none;
+    box-shadow: none;
+    &:focus {
+      box-shadow: 0 0 0 1px $oc-color-primary-yellow, 0 0 8px $oc-color-primary-yellow;
+    }
+  }
+  input[type="text"]::-ms-clear {
+    display: none;
+  }
+  input[type="search"] {
+    -webkit-appearance: searchfield;
+  }
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+  }
+  .btn.dynamic-search, .btn.dynamic-search:disabled {
+    background: transparent;
+    border: transparent;
+    svg {
+      color: $oc-color-primary-azure;
+    }
+  }
+  .input-group-btn {
+    width: $search-line-height;
+  }
+  .btn {
+    height: $search-line-height;
+    width: inherit;
+    padding: 0;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px $oc-color-white, 0 0 0 3px $oc-color-primary-yellow;
+    }
+  }
+}
