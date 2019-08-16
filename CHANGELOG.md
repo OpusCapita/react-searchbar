@@ -2,16 +2,19 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
-## <next>
+## next
+* Fixed search input border color
+* Added props: `autoFocus`, sets a focus to an input field of SearchBox after component has been mounted.
+
+## 2.0.0
 * Refactor props
   * Removed props: `value`, `onCloseClick`, `dynamicSearchStartsFrom`, `tooltip`, `searchPlaceHolder`
   * Added props: `defaultValue`, `onClear`, `minChars`, `isDynamic`, `isTooltipEnabled`, `translations`
 * Fix bug: Double clear icon in IE
 * Upgrade npm packages
 * Translations can now be passed as strings or nodes
-* Fixed search input border color
 
-## 1.0.7
+## 1.1.0
 * Add ID prop and HTML ID tags
 * Upgrade packages
 
