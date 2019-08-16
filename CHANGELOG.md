@@ -4,6 +4,9 @@
 
 ## next
 
+## 2.1.1
+* Fixed version publishing
+
 ## 2.1.0
 * Fixed search input border color
 * Added props: `autoFocus`, sets a focus to an input field of SearchBox after component has been mounted.
