@@ -14,6 +14,7 @@ import './searchbar.component.scss';
 
 export default class SearchBar extends React.PureComponent {
   static propTypes = {
+    autoFocus: PropTypes.bool,
     id: PropTypes.string,
     className: PropTypes.string,
     inputClassName: PropTypes.string,
@@ -32,6 +33,7 @@ export default class SearchBar extends React.PureComponent {
   };
 
   static defaultProps = {
+    autoFocus: false,
     id: 'oc-react-searchbar',
     className: 'oc-search-bar',
     inputClassName: '',
@@ -146,6 +148,7 @@ export default class SearchBar extends React.PureComponent {
 
   renderSearchBar = () => {
     const {
+      autoFocus,
       id,
       inputClassName,
       translations,
@@ -157,6 +160,7 @@ export default class SearchBar extends React.PureComponent {
     return (
       <InputGroup>
         <FormControl
+          autoFocus={autoFocus}
           id={`${id}-input`}
           type={isDynamic ? 'text' : 'search'}
           className={inputClassName}

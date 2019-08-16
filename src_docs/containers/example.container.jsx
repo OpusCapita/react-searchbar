@@ -9,6 +9,7 @@ const packageName = packageConfig.name.replace('@opuscapita/', '');
 
 export default class ComponentView extends React.PureComponent {
   state = {
+    autoFocus: true,
     minChars: 0,
     tooltipDelay: 0,
     allowEmptySearch: true,
